@@ -7,6 +7,7 @@
 		<groupId>com.blog.main</groupId>
 		<artifactId>blog-app-main</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../blog-app-main</relativePath> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.blog</groupId>
 	<artifactId>blog</artifactId>
@@ -91,7 +92,7 @@
 							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.parent.version}/WEB-INF/classes/static/blog</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${project.parent.basedir}/blog-frontend/dist/blog/</directory>
+									<directory>${project.parent.basedir}/../blog-frontend/dist/blog/</directory>
 								</resource>
 							</resources>
 						</configuration>

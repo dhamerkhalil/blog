@@ -6,6 +6,7 @@
 		<groupId>com.blog.main</groupId>
 		<artifactId>blog-app-main</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../blog-app-main</relativePath> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.blog</groupId>
 	<artifactId>blog-frontend</artifactId>
