@@ -12,12 +12,12 @@ export class ProfileComponent implements OnInit {
   statusList : any;
   errorFound = false;
   errorMsg: any;
-  postText = '';
+  postText = ''; 
   commentText = '';
   publishPostSuccess = false;
   errorLogoutFound = false;
   logoutSuccess = false;
-  errorLogoutMsg: any;
+  errorLogoutMsg: any; 
   errorDeletePostFound = false;
   deletePostSuccess =  false;
   errorDeleteCommentFound: boolean = false;
@@ -69,13 +69,12 @@ export class ProfileComponent implements OnInit {
   public logOut(){
     this.errorLogoutFound = false;
     this.httpClient.get('http://localhost:8080/logout');
-        console.log('logged out')
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-          this.router.navigate(['/login']);});
+    console.log('logged out')
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    this.router.navigate(['/login']);});
   }
 
   public deletePost(postId: number){
-
     this.errorDeletePostFound = false;
     this.deletePostSuccess = false;
     this.httpClient.delete('http://localhost:8080/delete-status/'+postId)
@@ -95,10 +94,10 @@ export class ProfileComponent implements OnInit {
   public publishComment(statusId : number, commentText : any){
     this.errorCommentFound = false;
     this.publishCommentSuccess = false;
-    this.httpClient.post('http://localhost:8080/add-comment/'+statusId,{'text': commentText.value})
+    this.httpClient.post('http://localhost:8080/add-comment/' + statusId,{ text : commentText.value})
     .subscribe(data => 
       {
-        this.publishCommentSuccess  = true
+        this.publishCommentSuccess  = true;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
           this.router.navigate(['/blog']);});
       }, 
