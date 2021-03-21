@@ -8,7 +8,7 @@
         <input type="text" id="email"  name="email" placeholder="email" [(ngModel)]="email">
         <input type="password" id="password"  name="password" placeholder="password" [(ngModel)]="password">
         <input type="button" (click)="signup()" value="Sign up">
-        <span  *ngIf="errorFound"> {{errorMsg}} </span>
+        <div  *ngIf="errorFound"> {{errorMsg}} </div>
 
     </div>
   </div>
