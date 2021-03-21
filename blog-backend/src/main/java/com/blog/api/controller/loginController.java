@@ -10,12 +10,12 @@ public class loginController extends BaseController  {
 
 	@RequestMapping("/")
 	public String root() {
-		return "blog/index.html";
+		return "/blog/index.html";
 	}
 
 	@RequestMapping("/login")
 	public String login() {
-		return "blog/index.html";
+		return "/blog/index.html";
 	}
 
 }
