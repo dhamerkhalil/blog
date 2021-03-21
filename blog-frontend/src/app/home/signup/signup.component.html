@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2  routerLink="/signin"> Sign In </h2>
+      <h2 class="active" >Sign Up </h2>
+  
+        <input type="text" id="fullName"  name="fullName" placeholder="full name"  [(ngModel)]="fullName">
+        <input type="text" id="email"  name="email" placeholder="email" [(ngModel)]="email">
+        <input type="password" id="password"  name="password" placeholder="password" [(ngModel)]="password">
+        <input type="button" (click)="signup()" value="Sign up">
+        <div  *ngIf="errorFound"> {{errorMsg}} </div>
+
+    </div>
+  </div>
