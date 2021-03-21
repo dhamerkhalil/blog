@@ -1,31 +1,37 @@
-<div class="wrapper">
-  <h3>{{userName}}</h3>
-    <input type="button"  (click)="logOut()" name="logout" value="logout">
-
-    <div id="formContent">
-        <input type="text" id="postText"  name="postText" placeholder="type your post here" [(ngModel)]="postText">
-        <input type="button"  (click)="publishPost()" value="publish Post">
+<div >
+    <h3 >User : {{userName}}</h3>
+    <input  class="buttonLogout" type="button"  (click)="logOut()" name="logout" value="logout">
+    <div id="addPostContent">
+        <textarea type="text"   name="postText" placeholder="type your post here" [(ngModel)]="postText"></textarea>
+        <input class="buttonPost"   type="button"  (click)="publishPost()" value="publish Post">
         <span  *ngIf="errorLogoutFound"> {{errorMsg}} </span>
     </div>
-
-    <div id="postCommentContent"  >
+    <div   >
         <!-- post -->
-        <div id="formContent" *ngFor="let status of statusList">
-          <span class="wrapper" id="postText"  name="postText" placeholder="your is post here">  {{status.date | date: 'dd/MM/yyyy HH:mm'}} {{status.statusUser.fullName}} : {{status.text}}</span>
-          <input *ngIf="currentUser.id == status.statusUser.id" type="button" (click)="deletePost(status.id)"  value="delet post"> 
+        <div id="postContent" *ngFor="let status of statusList">
+          <span  id="postText"  name="postText" placeholder="your is post here">  {{status.date | date: 'dd/MM/yyyy HH:mm'}} {{status.statusUser.fullName}} : {{status.text}}</span>
+          <input  class="buttonDelete" *ngIf="currentUser.id == status.statusUser.id" type="button" (click)="deletePost(status.id)"  value="delet post"> 
         
 
-        <div id="postCommentContent">
+        <div id="postCommentList">
             <!-- comment list -->
-            <h3>Comments:</h3>
+            <h3>Comments:</h3>    
             <div id="CommentContent" *ngFor="let comment of this.status.statusComments">
-                <span class="wrapper" id="commentText"  name="commentText" placeholder="your is comment here">{{comment.date | date: 'dd/MM/yyyy HH:mm'}} {{comment.user.fullName}} : {{comment.text}}</span>
-                <input type="button" *ngIf="currentUser.id == comment.user.id" (click)="deleteComment(comment.id)"  value="delete comment">      
-            </div>
+                <table id="formContent"> <tr> 
+                  <span  id="commentText"  name="commentText" placeholder="your is comment here">{{comment.date | date: 'dd/MM/yyyy HH:mm'}} {{comment.user.fullName}} : {{comment.text}}</span>
+                </tr>
+                <tr>
+                  <td>
+                  <input type="button" class="buttonDelete" *ngIf="currentUser.id == comment.user.id" (click)="deleteComment(comment.id)"  value="delete comment">                      
+                  <td>
+                </tr>  
+               </table>
+              </div>
+          
             <!-- comment Form -->
             <div id="postCommentContent">
-              <input type="text"  name="addCommentText" placeholder="type your comment here" #commentText>
-              <input type="button" (click)="publishComment(status.id,commentText)" value="publish comment">
+              <input style="border: 2px solid rgb(97, 140, 204);" type="text"  name="addCommentText" placeholder="type your comment here" #commentText>
+              <input type="button" class="buttonPost" (click)="publishComment(status.id,commentText)" value="publish comment">
             </div>
           </div>
         </div>
