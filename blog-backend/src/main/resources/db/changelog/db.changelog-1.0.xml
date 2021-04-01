@@ -4,7 +4,7 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 	<changeSet author="khalil" id="create user table">
-		<createTable tableName="USER">
+		<createTable tableName="user">
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false"/>
 			</column>
@@ -21,7 +21,7 @@
 	</changeSet>
 	
 	<changeSet author="khalil" id="create table status">
-		<createTable tableName="STATUS">
+		<createTable tableName="status">
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false"/>
 			</column>
@@ -34,13 +34,13 @@
 			<column name="userid" type="BIGINT">
 			  <constraints nullable="false" 
                 foreignKeyName="fk_status_userid" 
-                references="USER(id)"/>
+                references="user(id)"/>
 			</column>
 		</createTable>
 	</changeSet>
 	
 	<changeSet author="khalil" id="create comment table">
-		<createTable tableName="COMMENT">
+		<createTable tableName="comment">
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true"  nullable="false"/>
 			</column>
@@ -53,12 +53,12 @@
 			<column name="userid" type="BIGINT">
 				<constraints nullable="false" 
                 foreignKeyName="fk_comment_userid" 
-                references="USER(id)"/>
+                references="user(id)"/>
 			</column>
 			<column name="statusid" type="BIGINT">
 				<constraints nullable="false" 
                 foreignKeyName="fk_comment_statusid" 
-                references="STATUS(id)" deleteCascade="true"/>
+                references="status(id)" deleteCascade="true"/>
 			</column>
 		</createTable>
 	</changeSet>

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mariadb-docker-container:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=blog
+      - MYSQL_PASSWORD=root
+    volumes:
+      - /data/mysql
+  angular-app:
+    build: ./blog-frontend
+    ports:
+      - 80:80
+    volumes:
+      - /data/angular-app
+  spring-boot-app:
+    build: ./blog-backend
+    depends_on:
+      - mariadb-docker-container
+      - angular-app
+    ports:
+      - 8080:8080
+    volumes:
+      - /data/spring-boot-app
