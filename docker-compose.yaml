@@ -30,5 +30,6 @@ services:
       - 8080:8080
     volumes:
       - /data/spring-boot-app
+    restart: on-failure
 networks:
   app-network:
