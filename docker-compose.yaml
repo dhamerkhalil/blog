@@ -3,6 +3,8 @@ version: '3'
 services:
   mariadb-docker-container:
     image: mariadb:latest
+    networks:
+      - app-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=blog
@@ -11,12 +13,16 @@ services:
       - /data/mysql
   angular-app:
     build: ./blog-frontend
+    networks:
+      - app-network
     ports:
       - 80:80
     volumes:
       - /data/angular-app
   spring-boot-app:
     build: ./blog-backend
+    networks:
+      - app-network
     depends_on:
       - mariadb-docker-container
       - angular-app
@@ -24,3 +30,5 @@ services:
       - 8080:8080
     volumes:
       - /data/spring-boot-app
+networks:
+  app-network:
