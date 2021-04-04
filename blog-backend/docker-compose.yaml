@@ -11,25 +11,16 @@ services:
       - MYSQL_PASSWORD=root
     volumes:
       - /data/mysql
-  angular-app:
-    build: ./blog-frontend
-    networks:
-      - app-network
-    ports:
-      - 80:80
-    volumes:
-      - /data/angular-app
-  spring-boot-app:
-    build: ./blog-backend
+  spring-boot-app-hybrid:
+    build: .
     networks:
       - app-network
     depends_on:
       - mariadb-docker-container
-      - angular-app
     ports:
       - 8080:8080
     volumes:
-      - /data/spring-boot-app
+      - /data/spring-boot-app-hybrid
     restart: on-failure
 networks:
   app-network:
