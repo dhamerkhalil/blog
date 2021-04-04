@@ -9,6 +9,6 @@ Docker
 ## Build project and run:
 
 1. run this command :
-docker-comppose up
+docker-compose up
 
 2.open this URL in your web browser : http://localhost:8080
