@@ -13,9 +13,5 @@ public class loginController extends BaseController  {
 		return "blog/index.html";
 	}
 
-	@RequestMapping("/login")
-	public String login() {
-		return "blog/index.html";
-	}
 
 }

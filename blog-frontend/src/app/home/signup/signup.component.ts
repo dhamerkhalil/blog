@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -26,8 +26,7 @@ export class SignupComponent implements OnInit {
     this.errorFound = false;
     this.signUpSuccess = false;
     let body = {'fullName': this.fullName, 'email': this.email, 'password': this.password}
-    
-    
+
     this.httpClient.post('http://localhost:8080/add-user',body)
     .subscribe(data => 
       {

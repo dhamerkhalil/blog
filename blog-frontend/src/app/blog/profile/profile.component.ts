@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.getCurrentUser();
+   this.getCurrentUser();
    this.getAllStatus();
   }
 
@@ -124,7 +124,7 @@ export class ProfileComponent implements OnInit {
  }
 
 public getCurrentUser(){
-  this.httpClient.get('http://localhost:8080/current-logged-user')
+  this.httpClient.get('http://localhost:8080/current-logged-user',{headers : {"withCredentials" : "true"}})
   .subscribe(data => 
     {
       this.currentUser = data

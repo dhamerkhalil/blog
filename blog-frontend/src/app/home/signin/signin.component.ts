@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -29,8 +29,9 @@ export class SigninComponent implements OnInit {
     let body = new HttpParams();
     body = body.set('user', this.username);
     body = body.set('pass', this.password);
+
     
-    this.httpClient.post('http://localhost:8080/doLogin',body)
+    this.httpClient.post('http://localhost:8080/doLogin',body,{headers : {"withCredentials" : "true"}})
     .subscribe(data => 
       {
         this.loginsuccess  = true
