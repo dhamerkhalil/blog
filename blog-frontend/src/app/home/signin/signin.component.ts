@@ -30,8 +30,12 @@ export class SigninComponent implements OnInit {
     body = body.set('user', this.username);
     body = body.set('pass', this.password);
 
+
+     let headers1 = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
+
     
-    this.httpClient.post('http://localhost:8080/doLogin',body,{headers : {"withCredentials" : "true"}})
+    this.httpClient.post('http://localhost:8080/doLogin',body,{ headers: headers1, withCredentials: true })
     .subscribe(data => 
       {
         this.loginsuccess  = true

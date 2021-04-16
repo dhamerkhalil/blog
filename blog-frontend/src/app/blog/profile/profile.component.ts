@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   userName = ''
   errorCommentFound: boolean = false;
+  header = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private router : Router, private httpClient : HttpClient) {
   }
@@ -38,7 +39,7 @@ export class ProfileComponent implements OnInit {
   }
 
   public getAllStatus(){
-    this.httpClient.get('http://localhost:8080/status')
+    this.httpClient.get('http://localhost:8080/status',{ headers: this.header, withCredentials: true })
     .subscribe(data => 
       {
         this.statusList = data;
@@ -53,7 +54,7 @@ export class ProfileComponent implements OnInit {
   public publishPost(){
     this.errorFound = false;
     this.publishPostSuccess = false;
-    this.httpClient.post('http://localhost:8080/add-status',{'text': this.postText})
+    this.httpClient.post('http://localhost:8080/add-status',{'text': this.postText}, { headers: this.header, withCredentials: true })
     .subscribe(data => 
       {
         this.publishPostSuccess  = true
@@ -68,7 +69,7 @@ export class ProfileComponent implements OnInit {
 
   public logOut(){
     this.errorLogoutFound = false;
-    this.httpClient.get('http://localhost:8080/logout');
+    this.httpClient.get('http://localhost:8080/logout', { headers: this.header, withCredentials: true });
     console.log('logged out')
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
     this.router.navigate(['/login']);});
@@ -77,7 +78,7 @@ export class ProfileComponent implements OnInit {
   public deletePost(postId: number){
     this.errorDeletePostFound = false;
     this.deletePostSuccess = false;
-    this.httpClient.delete('http://localhost:8080/delete-status/'+postId)
+    this.httpClient.delete('http://localhost:8080/delete-status/'+postId , { headers: this.header, withCredentials: true })
     .subscribe(data => 
       {
         this.deletePostSuccess  = true
@@ -94,7 +95,7 @@ export class ProfileComponent implements OnInit {
   public publishComment(statusId : number, commentText : any){
     this.errorCommentFound = false;
     this.publishCommentSuccess = false;
-    this.httpClient.post('http://localhost:8080/add-comment/' + statusId,{ text : commentText.value})
+    this.httpClient.post('http://localhost:8080/add-comment/' + statusId,{ text : commentText.value} , { headers: this.header, withCredentials: true })
     .subscribe(data => 
       {
         this.publishCommentSuccess  = true;
@@ -110,7 +111,7 @@ export class ProfileComponent implements OnInit {
  public deleteComment(commentId : number){
   this.errorDeleteCommentFound = false;
   this.deleteCommentSuccess = false;
-  this.httpClient.delete('http://localhost:8080/delete-comment/'+commentId)
+  this.httpClient.delete('http://localhost:8080/delete-comment/'+commentId, { headers: this.header, withCredentials: true })
   .subscribe(data => 
     {
       this.deleteCommentSuccess  = true
@@ -124,7 +125,8 @@ export class ProfileComponent implements OnInit {
  }
 
 public getCurrentUser(){
-  this.httpClient.get('http://localhost:8080/current-logged-user',{headers : {"withCredentials" : "true"}})
+
+  this.httpClient.get('http://localhost:8080/current-logged-user',{ headers: this.header, withCredentials: true })
   .subscribe(data => 
     {
       this.currentUser = data
