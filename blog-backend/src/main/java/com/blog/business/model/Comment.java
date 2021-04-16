@@ -1,5 +1,6 @@
 package com.blog.business.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,7 +19,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "COMMENT")
-public class Comment {
+public class Comment  implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1991107400811845773L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -41,10 +41,9 @@ public class CustomSuccessHandler extends SavedRequestAwareAuthenticationSuccess
 	      data.put(
 	        "message", 
 	        "Logged in successfully");
-	      response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-	      response.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
-	      response.setHeader("Allow-Origin-With-Credentials","true");
-	      response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+
+	      response.setHeader("Allow-Origin-With-Credentials","true"); 
+	      response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type, token, language");
 	      response.setHeader("Access-Control-Allow-Credentials", "true");
 
 	      response.getOutputStream()

@@ -1,5 +1,6 @@
 package com.blog.business.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,8 +19,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "USER")
-public class User {
+public class User  implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2848254770906934803L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

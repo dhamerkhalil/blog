@@ -1,5 +1,6 @@
 package com.blog.business.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -23,7 +24,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "STATUS")
-public class Status {
+public class Status  implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2481694097176585852L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
